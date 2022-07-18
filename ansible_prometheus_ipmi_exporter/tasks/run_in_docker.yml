@@ -2,11 +2,11 @@
 - name: Start docker node exporter container
   community.docker.docker_compose:
     state: present
-    project_name: prometheus_blackbox_exporter
+    project_name: prometheus_ipmi_exporter
     definition:
       version: '2'
       services:
-        blackbox_exporter:
+        ipmi_exporter:
           image: "{{ IPMI_exporter_docker_image }}"
           container_name: "{{ IPMI_exporter_container_name }}"
           ports:
@@ -14,3 +14,5 @@
           hostname: "{{ ansible_host }}"
           restart: always
           labels: "{{ IPMI_exporter_docker_labels }}"
+          devices:
+            - "/dev/ipmi0"
