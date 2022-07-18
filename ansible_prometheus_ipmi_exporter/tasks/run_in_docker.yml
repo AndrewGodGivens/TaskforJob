@@ -15,4 +15,4 @@
           restart: always
           labels: "{{ IPMI_exporter_docker_labels }}"
           devices:
-            - "/dev/ipmi0"
+            - "/dev/ipmi0:/dev/ipmi0"
